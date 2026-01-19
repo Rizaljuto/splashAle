@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Splash Ale - Pixel Perfect Assets</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      background: #0a0f1a;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      background: rgba(10, 15, 26, 0.9);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .brand-name {
+      font-size: 1.4rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #6c9eff;
+      letter-spacing: 1px;
+      text-shadow: 0 0 5px rgba(108, 158, 255, 0.5);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #6c9eff;
+      background: rgba(108, 158, 255, 0.1);
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(108, 158, 255, 0.3);
+    }
+
+    .cta-button {
+      background: #fff;
+      color: #0a0f1a;
+      border-radius: 50px;
+      padding: 0.5rem 1rem;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: url('1768835448.png') no-repeat center center;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      padding: 0 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(10,15,26,0.8), rgba(10,15,26,0.9));
+      z-index: 1;
+    }
+
+    .left-panel {
+      max-width: 40%;
+      z-index: 2;
+      opacity: 0;
+      transform: translateX(-50px);
+      padding-right: 2rem;
+    }
+
+    .left-panel.animate {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .left-panel h1 {
+      font-size: 2.5rem;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+      color: #6c9eff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      font-weight: 800;
+    }
+
+    .left-panel h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .left-panel p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: #ddd;
+      line-height: 1.6;
+    }
+
+    .left-panel p strong {
+      color: #6c9eff;
+      font-weight: bold;
+    }
+
+    .right-panel {
+      flex: 1;
+      text-align: center;
+      z-index: 2;
+      opacity: 0;
+      transform: translateX(50px);
+    }
+
+    .right-panel.animate {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .quote {
+      font-size: 1.4rem;
+      font-style: italic;
+      margin: 2rem 0;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      line-height: 1.4;
+    }
+
+    .btn-primary {
+      background: #0a0f1a;
+      color: white;
+      padding: 0.75rem 2rem;
+      border-radius: 50px;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      opacity: 0;
+      transform: translateY(30px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px) scale(1.05) !important;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      background: #1e2a4a;
+    }
+
+    /* Bottom Text */
+    .bottom-text {
+      padding: 3rem 5%;
+      background: rgba(10, 15, 26, 0.8);
+      margin-top: -5rem;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .bottom-text.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .bottom-text p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      color: #ddd;
+    }
+
+    /* Work Section */
+    #work {
+      padding: 5rem 5%;
+      background: #0d1220;
+      text-align: center;
+    }
+
+    #work h2 {
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      color: #6c9eff;
+      text-shadow: 0 0 8px rgba(108, 158, 255, 0.3);
+    }
+
+    .assets-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .asset-card {
+      background: rgba(20, 25, 40, 0.7);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      padding: 1rem;
+    }
+
+    .asset-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(108, 158, 255, 0.4);
+      background: rgba(25, 30, 50, 0.8);
+    }
+
+    .asset-image {
+      width: 100%;
+      height: 140px;
+      background: #1a2035;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6c9eff;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 0.5rem;
+    }
+
+    .asset-title {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+
+    .asset-price {
+      color: #6c9eff;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .asset-btn {
+      background: #6c9eff;
+      color: #0a0f1a;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s;
+      width: 100%;
+    }
+
+    .asset-btn:hover {
+      background: #4a7bff;
+      transform: scale(1.05);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem 3%;
+        flex-wrap: wrap;
+      }
+
+      .brand-name {
+        font-size: 1.2rem;
+      }
+
+      nav ul {
+        gap: 1rem;
+        font-size: 0.9rem;
+        margin-top: 1rem;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .hero {
+        padding: 0 3%;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .left-panel {
+        max-width: 100%;
+        padding-right: 0;
+        margin-bottom: 2rem;
+      }
+
+      .right-panel {
+        margin-top: 2rem;
+      }
+
+      .left-panel h1 {
+        font-size: 2rem;
+      }
+
+      .left-panel h2 {
+        font-size: 1.5rem;
+      }
+
+      .quote {
+        font-size: 1.2rem;
+        margin: 1rem 0;
+      }
+
+      .btn-primary {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+      }
+
+      .bottom-text {
+        padding: 2rem 3%;
+      }
+
+      #work {
+        padding: 3rem 3%;
+      }
+
+      .assets-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header id="header">
+    <div class="brand-name">Splash Ale</div>
+    <nav>
+      <ul>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Work</a></li>
+      </ul>
+    </nav>
+    <a href="#" class="cta-button" id="cta-arrow">→</a>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="left-panel">
+      <h1>Pixel Perfect Assets</h1>
+      <h2>Zero Hassle.</h2>
+      <p>
+        Temukan atau jual sprite, tileset, dan UI pixel art berkualitas tinggi semua dioptimalkan untuk 
+        <strong>Unity, Godot,</strong> dan <strong>GameMaker Studio.</strong>
+      </p>
+    </div>
+    <div class="right-panel">
+      <div class="quote">
+        “Jelajahi 5.000+ Aset Pixel Siap Pakai Mulai Gratis Hari Ini!”
+      </div>
+      <a href="#" class="btn-primary" id="cta-below-quote">COBA SEKARANG</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="bottom-text" id="about">
+    <p>Membuat game pixel seharusnya menyenangkan, bukan melelahkan. Tapi mencari aset yang konsisten secara gaya, kompatibel dengan engine-mu, dan punya lisensi jelas?</p>
+    <p>Setiap aset menyerahkan ketentuan penggunaan untuk proyek pribadi maupun komersial.</p>
+    <p>Seniman mendapatkan 85% dari setiap penjualan.</p>
+  </section>
+
+  <!-- Work Section -->
+  <section id="work">
+    <h2>Aset Pixel Populer</h2>
+    <div class="assets-grid">
+      <!-- Item 1 -->
+      <div class="asset-card">
+        <div class="asset-image">Tileset Desa Pixel</div>
+        <div class="asset-title">Village Tileset</div>
+        <div class="asset-price">Gratis</div>
+        <button class="asset-btn">Lihat Detail</button>
+      </div>
+      <!-- Item 2 -->
+      <div class="asset-card">
+        <div class="asset-image">Sprite Karakter RPG</div>
+        <div class="asset-title">RPG Hero Pack</div>
+        <div class="asset-price">Rp 25.000</div>
+        <button class="asset-btn">Lihat Detail</button>
+      </div>
+      <!-- Item 3 -->
+      <div class="asset-card">
+        <div class="asset-image">UI Pixel Minimalis</div>
+        <div class="asset-title">Clean UI Kit</div>
+        <div class="asset-price">Rp 15.000</div>
+        <button class="asset-btn">Lihat Detail</button>
+      </div>
+      <!-- Item 4 -->
+      <div class="asset-card">
+        <div class="asset-image">Enemy Sprite Pack</div>
+        <div class="asset-title">Monster Bundle</div>
+        <div class="asset-price">Rp 30.000</div>
+        <button class="asset-btn">Lihat Detail</button>
+      </div>
+      <!-- Item 5 -->
+      <div class="asset-card">
+        <div class="asset-image">Pixel Weapon Icons</div>
+        <div class="asset-title">Weapon Icons</div>
+        <div class="asset-price">Gratis</div>
+        <button class="asset-btn">Lihat Detail</button>
+      </div>
+      <!-- Item 6 -->
+      <div class="asset-card">
+        <div class="asset-image">Animated NPCs</div>
+        <div class="asset-title">NPC Animations</div>
+        <div class="asset-price">Rp 40.000</div>
+        <button class="asset-btn">Lihat Detail</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Script -->
+  <script>
+    function scrollToSection(selector) {
+      const target = document.querySelector(selector);
+      if (target) {
+        window.scrollTo({
+          top: target.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    // Sticky Header
+    window.addEventListener('scroll', function() {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.style.padding = '0.75rem 5%';
+        header.style.background = 'rgba(10, 15, 26, 0.95)';
+        header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.5)';
+      } else {
+        header.style.padding = '1rem 5%';
+        header.style.background = 'rgba(10, 15, 26, 0.9)';
+        header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
+      }
+    });
+
+    // Smooth Scroll & Active Nav
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        scrollToSection(targetId);
+
+        document.querySelectorAll('nav a').forEach(el => el.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // CTA Buttons
+    document.getElementById('cta-arrow').addEventListener('click', (e) => {
+      e.preventDefault();
+      scrollToSection('#about');
+    });
+
+    document.getElementById('cta-below-quote').addEventListener('click', (e) => {
+      e.preventDefault();
+      scrollToSection('#work');
+    });
+
+    // Asset Button Click (opsional)
+    document.querySelectorAll('.asset-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        alert('Fitur detail aset akan segera hadir!');
+      });
+    });
+
+    // Scroll Animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.left-panel, .right-panel, .bottom-text').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
